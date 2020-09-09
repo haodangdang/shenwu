@@ -112,11 +112,11 @@ img{
 
 @font-face {
     font-family: hydotfont006;
-    src: url('./hydotfont006.ttf?v1.21');
+    src: url('https://imgs.it2048.cn/sw/hydotfont006.ttf');
 }
 @font-face {
     font-family: lightpixel7;
-    src: url('./lightpixel7.ttf?v1.21');
+    src: url('https://imgs.it2048.cn/sw/lightpixel7.ttf');
 }
 
 *,
