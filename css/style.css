@@ -637,6 +637,13 @@ body{
 	padding-left: 0.375rem;
 	padding-top: 0.84rem;
 }
+.model .model_2 .player_gif{
+	width: 2.74rem;
+    height: 3.365rem;
+    position: absolute;
+    bottom: 0.36rem;
+    right: 0.15rem;
+}
 .model .model_2 .skip{
 	margin-top: 0.7rem;
 }
