@@ -172,7 +172,7 @@ body{
 }
 .page_0{
 	position: relative;
-	background: url(../image/bg.jpg);
+	background: url(//imgs.it2048.cn/sw/image/bg.jpg);
 	background-size: 3.75rem auto;
 }
 .page_0 .logo{
@@ -203,7 +203,7 @@ body{
 	bottom: 0;
 	height: 1.46rem;
 	width: 100%;
-	background: url(../image/bg2.png);
+	background: url(//imgs.it2048.cn/sw/image/bg2.png);
 	background-size: contain;
 }
 .home_bottom .panda{
@@ -234,7 +234,7 @@ body{
 	width: 100%;
 	margin-top: 0.2rem;
 	margin-bottom: 0.14rem;
-	/*background: url(../image/press_start.png);
+	/*background: url(//imgs.it2048.cn/sw/image/press_start.png);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 2.42rem 0.39rem;*/
@@ -267,7 +267,7 @@ body{
 }
 
 .page_1{
-	background-image: url(../image/page2_bg.png);
+	background-image: url(//imgs.it2048.cn/sw/image/page2_bg.png);
 	background-repeat: no-repeat;
 	background-size: 100% auto;
 }
@@ -313,7 +313,7 @@ body{
 	bottom: 0;
 	width: 100%;
 	height: 1.345rem;
-	background: url(../image/page2_bottom.png);
+	background: url(//imgs.it2048.cn/sw/image/page2_bottom.png);
 	background-repeat: no-repeat;
 	background-size: contain;
 }
@@ -349,7 +349,7 @@ body{
 	bottom: 0;
 	width: 100%;
 	height: 4.46rem;
-	background: url(../image/res_bg.jpg);
+	background: url(//imgs.it2048.cn/sw/image/res_bg.jpg);
 	background-repeat: no-repeat;
 	background-size: contain;
 }
@@ -461,7 +461,7 @@ body{
 }
 .page_3{
 	width: 100%;
-	background: url(../image/page3_bg.png);
+	background: url(//imgs.it2048.cn/sw/image/page3_bg.png);
 	background-repeat: no-repeat;
 	background-size: 3.75rem auto;
 }
@@ -470,7 +470,7 @@ body{
 	bottom: 0;
 	height: 2.57rem;
 	width: 100%;
-	background: url(../image/page3_bottom.png);
+	background: url(//imgs.it2048.cn/sw/image/page3_bottom.png);
 	background-repeat: no-repeat;
 	background-size: 3.75rem auto;
 	display: flex;
@@ -484,7 +484,7 @@ body{
 .res_panel{
 	width: 3.4rem;
 	height: 4.685rem;
-	background: url(../image/res_panel.png);
+	background: url(//imgs.it2048.cn/sw/image/res_panel.png);
 	background-repeat: no-repeat;
 	background-size: 3.4rem 4.685rem;
 	margin: 0 auto;
@@ -545,7 +545,7 @@ body{
 	width: 3.405rem;
 	height: 4.7rem;
 	margin-left: -1.7025rem;
-	background: url(../image/jieqian_panel.png);
+	background: url(//imgs.it2048.cn/sw/image/jieqian_panel.png);
 	background-repeat: no-repeat;
 	background-size: contain;
 	z-index: 200;
@@ -563,13 +563,13 @@ body{
 	bottom: 0.5rem;
 	left: 50%;
 	margin-left: -0.2rem;
-	background: url(../image/close.png) no-repeat;
+	background: url(//imgs.it2048.cn/sw/image/close.png) no-repeat;
 	background-size: contain;
 }
 .fenxiang_show{
 	width: 2.345rem;
 	height: 2.44rem;
-	background: url(../image/share_tip.png) no-repeat;
+	background: url(//imgs.it2048.cn/sw/image/share_tip.png) no-repeat;
 	background-size: contain;
 	position: absolute;
 	top: 0.7rem;
@@ -585,7 +585,7 @@ body{
 	bottom: -0.6rem;
 	left: 50%;
 	margin-left: -0.2rem;
-	background: url(../image/close.png) no-repeat;
+	background: url(//imgs.it2048.cn/sw/image/close.png) no-repeat;
 	background-size: contain;
 }
 .model{
