@@ -12,121 +12,6 @@ $(function(){
 		})
 })
 
-//加载方法
-var page_load = {
-	ancestor: null, // 大dom
-	wrapper: null, // 临时图片存放dom
-	target: null, // 显示百分数的dom
-	delayTime: 0*1000, // 最少加载完所需时间 // kn todo
-	delayed: false, // 是否超过最少加载完所需时间
-	imgCount: 0, // 图片总数
-	loadedCount: 0, // 已加载完成数
-	jAniBlock: null,
-	jRunImg: null,
-	runImgHref: './img/loading_done.png',
-	init: function(){
-		this.ancestor = $('#landing_load')
-		this.wrapper = $('#img_wrapper')
-		this.jAniBlock = $('#loading_animation_block')
-		this.jRunImg = $('#loading_run_img')
-
-		this.bind()
-	},
-	bind: function(){
-		var self = this
-
-		this.getImg()
-		this.timeout()
-	},
-	getImg: function(){
-		var self = this,
-			html = ''
-
-		$('body *')
-			.each(function(i){
-				var oThis = $(this),
-					tagName = 'img',
-					src = '',
-					handler='onload',
-					backgroundImage = oThis.css('backgroundImage').replace('url(','').replace(')','')
-
-				if(oThis[0].tagName == 'IMG' && oThis.attr('src')){
-					src = oThis.attr('src')
-				}else if(oThis[0].tagName == 'AUDIO' && oThis.attr('src')){
-					tagName = 'audio'
-					handler = 'oncanplay'
-					src = oThis.attr('src')
-				}else if(backgroundImage != 'none'){
-					src = backgroundImage
-				}
-
-				if(!src)return true
-
-				self.imgCount ++
-				html += '<'+tagName+' src='+src+' alt="" '+handler+'="page_load.loaded()" onerror="page_load.error(this)" />'
-			})
-
-		self.wrapper.html(html)
-	},
-	timeout: function(){
-		var self = this
-
-		setTimeout(function(){
-			self.delayed = true
-
-			if(self.loadedCount >= self.imgCount){
-				self.loaded()
-			}
-		}, self.delayTime)
-	},
-	error: function(e){
-		var self = this
-
-		self.loadedCount ++
-		self.done()
-	},
-	loaded: function(){
-		var self = this
-
-		self.loadedCount ++
-		self.done()
-	},
-	done: function(){
-		var self = this
-
-		if(self.loadedCount >= self.imgCount){
-			if(!self.delayed){
-				return false
-			}
-
-			self.jAniBlock.css('left', '100%')
-			self.jRunImg
-				.attr('src', self.runImgHref)
-				.addClass('done')
-
-			// 播放庆祝音乐
-			audio.play('#enter')
-
-			// return; // kn
-
-			setTimeout(function(){
-				self.ancestor
-					.addClass('hidden')
-					.next()
-					.addClass('current')
-
-				self.wrapper.remove()
-			}, 0.5*1000)
-		}else{
-			var percent = parseInt(100*self.loadedCount/self.imgCount);
-
-			self.jAniBlock.css('left', percent+'%')
-			$('#debugger').html(percent)
-		}
-	}
-}
-// page_load.init()
-
 //页面切换方法
 var page = {
 	prev: 0,
@@ -138,7 +23,6 @@ var page = {
 		this.page = $('.page')
 
 		this.bind()
-		console.log('init');
 
 		//测试用，去到哪页填哪页
 		// this.go2(3)
@@ -162,12 +46,15 @@ var page = {
 		if(i == self.current){
 			return false
 		}
-
-		this.page
+		if(i == 3){
+			$('#page_'+i)
+			.addClass('current opci');
+		} else {
+			this.page
 			.removeClass('current')
-
-		$('#page_'+i)
-			.addClass('current')
+			$('#page_'+i)
+			.addClass('current');
+		}
 
 		this.prev = i >= this.current ? this.current : i - 1
 		this.current = i
@@ -301,6 +188,7 @@ var main = {
 			}else{
 				$('.touzi_pause').show();
 				$('.touzi_play').hide();
+				self.showMusic();
 				page.go2(1);
 			}
 		});
@@ -362,12 +250,27 @@ var main = {
 				$('.res_icon').addClass('again').removeClass('go');
 				$('.time span').html(10 - self.count);
 			}
-			page.go2(2)
+			self.hideMusic();
+			page.go2(2);
 			// 游戏格 6 2 1 youxi 6, 2, 1
 			// 惩罚格 5 chengfa 10
 			// 事件格 4 1 6 shijian 12, 3, 18
 			// 奖励格 2 6 jiangli 8, 24
 		}, 3000)
+	},
+	showMusic: function () {
+		var bgMusic = document.getElementById('audio');
+        if (musicStatus){
+            bgMusic.play();
+        }
+        $('.bg_music').show();
+	},
+	hideMusic: function () {
+		var bgMusic = document.getElementById('audio');
+		if (musicStatus){
+            bgMusic.pause();
+        }
+		$('.bg_music').hide();
 	},
 	setIframe: function (url) {
 		var iframe_dom = `<iframe class="video" src="${url}" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>`;
@@ -379,41 +282,76 @@ var main = {
 		var title, xinyunse, yi, chenghao, liwu, jieqian;
 		if( count <= 2){
 			title = 'ouqi';
-			xinyunse = '白\\蓝\\红';
-			yi = '诸事皆宜';
-			chenghao = '【欧皇】';
-			liwu = '【价值一千万的白无忧熊抱】';
-			jieqian = '今天你的欧气已经超越了以往的99%，做事大概率都能心想事成！说不定下一秒刚打开《神武4》的你，就能轻松洗出极品宝宝呢！';
+			xinyunse = '幸运色：白\\蓝\\红';
+			yi = '宜：诸事皆宜';
+			chenghao = '获得称号：【欧皇】';
+			liwu = '获得礼物：【价值一千万的白无忧熊抱】';
+			jieqian = '解签：今天你的欧气已经超越了以往的99%，做事大概率都能心想事成！说不定下一秒刚打开《神武4》的你，就能轻松洗出极品宝宝呢！';
 		} else if (count >= 3 && count <= 8) {
 			title = 'putong';
-			xinyunse = '橙\\青\\紫';
-			yi = '升官发财 打帮战 挖宝';
-			chenghao = '【亚洲之星】';
-			liwu = '【无】';
-			jieqian = '虽然今天的你运势不好不坏，但是只要努力终究还是能收获圆满滴。别着急，耐心等待，没准下一秒《神武4》就连换两本高必了~';
+			xinyunse = '幸运色：橙\\青\\紫';
+			yi = '宜：升官发财 打帮战 挖宝';
+			chenghao = '获得称号：【亚洲之星】';
+			liwu = '获得礼物：【无】';
+			jieqian = '解签：虽然今天的你运势不好不坏，但是只要努力终究还是能收获圆满滴。别着急，耐心等待，没准下一秒《神武4》就连换两本高必了~';
 		} else if(count >= 9) {
 			title = 'xuanxue';
-			xinyunse = '黑\\金\\粉';
-			yi = '撞桃花 肝日常 抓捕妖怪';
-			chenghao = '【非洲酋长】';
-			liwu = '【无】';
-			jieqian = '虽然你今天的手气有点差，但是身上却隐隐有红线缠绕。没事去《神武4》一些人迹罕见的地图，可能会有意想不到的桃花缘降临哦？';
+			xinyunse = '幸运色：黑\\金\\粉';
+			yi = '宜：撞桃花 肝日常 抓捕妖怪';
+			chenghao = '获得称号：【非洲酋长】';
+			liwu = '获得礼物：【无】';
+			jieqian = '解签：虽然你今天的手气有点差，但是身上却隐隐有红线缠绕。没事去《神武4》一些人迹罕见的地图，可能会有意想不到的桃花缘降临哦？';
 		}
 		$('.title_type').attr('src', `image/${title}.png`);
 		$('.xinyunse').html(xinyunse);
 		$('.yi').html(yi);
 		$('.chenghao').html(chenghao);
 		$('.liwu').html(liwu);
-		$('.jieqian_txt').html(jieqian);
+		$('.jieqian').html(jieqian);
+		self.showJieqian();
 		page.go2(3);
+		self.img();
 	},
+	img: function(){
+        var self = this,
+            ori_img_wrapper = $('#img_res')[0];
+
+        var shareContent = document.getElementById('creat_img');
+        var width = shareContent.offsetWidth;
+        var height = shareContent.offsetHeight;
+        var canvas = document.createElement("canvas");
+        var scale = 2;
+
+        canvas.width = width * scale;
+        canvas.height = height * scale;
+        canvas.getContext("2d").scale(scale, scale);
+
+        var opts = {
+            scale: scale,
+            canvas: canvas,
+            logging: true,
+            width: width,
+            height: height
+        };
+
+        html2canvas(shareContent, opts).then(canvas => {
+            var context = canvas.getContext('2d');
+            var img = Canvas2Image.convertToImage(canvas, canvas.width, canvas.height);
+
+            ori_img_wrapper.appendChild(img);
+            self.closeJieqian();
+            page.page.removeClass('current')
+            $('.page_3').removeClass('opci').addClass('current');
+            self.showMusic();
+        });
+    },
 	showJieqian: function () {
-		$('.jieqian_show').show();
-		$('.block_bg').show();
+		// $('.jieqian_show').show();
+		$('.block_bg').css('display', 'flex');
 	},
 	closeJieqian: function () {
-		$('.jieqian_show').hide();
-		$('.block_bg').hide();
+		// $('.jieqian_show').hide();
+		$('.block_bg').css('display', 'none');
 	},
 	showShare: function () {
 		$('.fenxiang_show').show();
@@ -437,4 +375,6 @@ var main = {
 	}
 }
 main.init();
+
+
 

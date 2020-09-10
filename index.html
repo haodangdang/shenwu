@@ -21,13 +21,33 @@
     if(window.orientation==90||window.orientation==-90) ratio = 333.5
     document.querySelector('html').style.fontSize = document.documentElement.clientWidth / ratio * 50 + 'px';
     </script>
-    <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+    <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <style>
+        @font-face {
+            font-family: lightpixel7;
+            src: url('https://imgs.it2048.cn/sw/lightpixel7.ttf');
+        }
+        .getfont{
+            font-family: FZJW;
+            position: absolute;
+            top: -10000rem;
+        }
+    </style>
 </head>
 
 <body>
 <div id="loading" class="loading">
 </div>
 <div id="root" class="root">
+    <div class="getfont">f</div>
+    <div class="bg_music">
+        <div style="height:0px;overflow:hidden;">
+            <audio id="audio" src="audio/bgm.mp3?v=1.0" loop="loop"></audio>
+        </div>
+        <a href="javascript:playPause();">
+            <div class="music_btn"></div>
+        </a>
+    </div>
     <div class="page page_0 current" id="page_0">
         <div class="logo">
             <img src="//imgs.it2048.cn/sw/image/logo.png" alt="">
@@ -72,7 +92,7 @@
                 <img src="//imgs.it2048.cn/sw/image/panda1.gif" alt="">
             </div>
             <div class="start_ctrl">
-                <img src="//imgs.it2048.cn/sw/image/start_game.png" alt="">
+                <img src="image/start_game.png" alt="">
             </div>
         </div>
         <div class="model">
@@ -141,111 +161,162 @@
     <div class="page page_3" id="page_3">
         <div class="res_panel">
             <div class="title"><img class="title_type" src="//imgs.it2048.cn/sw/image/ouqi.png" alt=""></div>
-            <div class="des xinyunse">白\蓝\红</div>
-            <div class="des yi">撞桃花 肝日常 抓捕妖怪</div>
-            <div class="des chenghao">【欧皇】</div>
-            <div class="des liwu">【价值一千万的白 无忧熊抱】</div>
-            <div class="ctrl">
+            <div class="des xinyunse">幸运色：白\蓝\红</div>
+            <div class="des yi">宜：撞桃花 肝日常 抓捕妖怪</div>
+            <div class="des chenghao">获得称号：【欧皇】</div>
+            <div class="des liwu">获得礼物：【价值一千万的白无忧 熊抱】</div>
+            <div class="des jieqian">解签：虽然你今天的手气有点差，但是身上却隐隐有红线缠绕。没事去《神武4》一些人迹罕见的地图，可能会有意想不到的桃花缘降临哦？</div>
+<!--             <div class="ctrl">
                 <div class="jieqian"><img src="//imgs.it2048.cn/sw/image/jieqian_btn.png" alt=""></div>
                 <div class="share"><img src="//imgs.it2048.cn/sw/image/share_btn.png" alt=""></div>
-            </div>
+            </div> -->
+            <div class="press"><img src="image/changan.png" alt=""></div>
+            <div class="logo"><img src="image/logo.png" alt=""></div>
         </div>
-        <div class="jieqian_show">
+       <!--  <div class="jieqian_show">
             <span class="jieqian_txt">虽然你今天的手气有点差，但是身上却隐隐有红线缠绕。没事去《神武4》一些人迹罕见的地图，可能会有意想不到的桃花缘降临哦？</span>
             <div class="close_jieqian"></div>
         </div>
         <div class="fenxiang_show">
             <div class="close_share"></div>
         </div>
-        <div class="block_bg"></div>
+        <div class="block_bg"></div> -->
         <div class="page3_bottom">
             <img class="people" src="//imgs.it2048.cn/sw/image/people.gif" alt="">
+            <img class="qrcode" src="image/qrcode.png" alt="">
         </div>
+        <div class="creat_img" id="creat_img">
+            <img class="creat_img_bg" src="image/page3_bg.png" alt="">
+            <div class="res_panel">
+                <div class="title"><img class="title_type" src="image/ouqi.png" alt=""></div>
+                <div class="des xinyunse">幸运色：白\蓝\红</div>
+                <div class="des yi">宜：撞桃花 肝日常 抓捕妖怪</div>
+                <div class="des chenghao">获得称号：【欧皇】</div>
+                <div class="des liwu">获得礼物：【价值一千万的白无忧 熊抱】</div>
+                <div class="des jieqian">解签：虽然你今天的手气有点差，但是身上却隐隐有红线缠绕。没事去《神武4》一些人迹罕见的地图，可能会有意想不到的桃花缘降临哦？</div>
+                <div class="share_logo"><img src="image/logo.png" alt=""></div>
+            </div>
+            <div class="page3_bottom">
+                <img class="page3_bottom_img" src="image/page3_bottom.png" alt="">
+                <img class="people" src="image/people.gif" alt="">
+                <img class="qrcode" src="image/qrcode.png" alt="">
+            </div>
+        </div>
+        <div class="img_wrap" id="img_res"></div>
     </div>
+    <div class="block_bg">请稍等，解签中...</div>
 </div><!-- /#root -->
 
 
 <script src="//libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript" src="js/html2canvas.min.js"></script>
+<script type="text/javascript" src="js/canvas2image.js"></script>
 <script src="//imgs.it2048.cn/sw/inobounce.min.js"></script>
 <script src="//imgs.it2048.cn/sw/hammer.min.js"></script>
 <script src="./js/main.js?v=0.58"></script>
 
 <script>
     // 初始化
-    var pagelink = location.href.split('#')[0];
-    alert('pagelink '+pagelink);
-    $.ajax({ 
-        url: "//sw.it2048.cn/sdk/",//后台给你提供的接口 
-        type: "get", 
-        data: { "url": pagelink }, 
-        dataType : "json", 
-        timeout : 5000, 
-        success: function (data) { 
-            alert('nonceStr'+data.nonceStr);
-            alert('timestamp'+data.timestamp); 
-            alert('signature'+data.signature); 
-            wx.config({ 
-                debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来 
-                appId: data.appId, // 必填，公众号的唯一标识 
-                timestamp: data.timestamp, // 必填，生成签名的时间戳 
-                nonceStr: data.nonceStr, // 必填，生成签名的随机串 
-                signature: data.signature,// 必填，签名，见附录1 
-                jsApiList: [ 'onMenuShareAppMessage', 'onMenuShareTimeline' ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2 
-            }); 
-        } 
-    });
+    // var pagelink = location.href.split('#')[0];
+    // alert('pagelink '+pagelink);
+    // $.ajax({ 
+    //     url: "//sw.it2048.cn/sdk/",//后台给你提供的接口 
+    //     type: "get", 
+    //     data: { "url": pagelink }, 
+    //     dataType : "json", 
+    //     timeout : 5000, 
+    //     success: function (data) { 
+    //         alert('nonceStr'+data.nonceStr);
+    //         alert('timestamp'+data.timestamp); 
+    //         alert('signature'+data.signature); 
+    //         wx.config({ 
+    //             debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来 
+    //             appId: data.appId, // 必填，公众号的唯一标识 
+    //             timestamp: data.timestamp, // 必填，生成签名的时间戳 
+    //             nonceStr: data.nonceStr, // 必填，生成签名的随机串 
+    //             signature: data.signature,// 必填，签名，见附录1 
+    //             jsApiList: [ 'onMenuShareAppMessage', 'onMenuShareTimeline' ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2 
+    //         }); 
+    //     } 
+    // });
 
-    // 处理分享
-    wx.ready(function () {
-        // 在页面加载时就调用相关接口，如：分享到朋友圈、获取位置信息等接口
-        wx.checkJsApi({
-            jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline'],
-            success: function (res) {
-                if (res.errMsg == 'checkJsApi:ok') {
-                    // 分享给朋友
-                    var title = '【神武4真好玩】目标是成为真正的欧皇！';
-                    var desc = '【神武4真好玩】目标是成为真正的欧皇！';
-                    var img = 'https://sw.it2048.cn/wx.png';
-                    wx.onMenuShareAppMessage({
-                        title: title, // 分享标题
-                        desc: desc, // 分享描述
-                        link: pagelink, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                        imgUrl: img, // 分享图标
-                        type: 'link', // 分享类型,music、video或link，不填默认为link
-                        // 用户取消已经监听不到了，不管取消与否，都是成功的
-                        success: function () {
-                            alert("恭喜你，分享成功");
-                        },
-                        // 用户取消分享后执行的回调函数
-                        cancel: function () {
-                            alert("取消分享");
-                        }
-                    });
-                    // 分享到朋友圈
-                    wx.onMenuShareTimeline({
-                        title: title, // 分享时的标题
-                        link: pagelink, // 分享时的链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                        imgUrl: img, // 分享时显示的图标
-                        // 用户取消已经监听不到了，不管取消与否，都是成功的
-                        success: function () {
-                            alert("恭喜你，分享成功");
-                        },
-                        // 用户取消分享后执行的回调函数
-                        cancel: function () {
-                            alert("取消分享");
-                        }
-                    });
-                } else {
-                    alert("失败了.......");
-                }
-            }
-        });
-    });
+    // // 处理分享
+    // wx.ready(function () {
+    //     // 在页面加载时就调用相关接口，如：分享到朋友圈、获取位置信息等接口
+    //     wx.checkJsApi({
+    //         jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline'],
+    //         success: function (res) {
+    //             if (res.errMsg == 'checkJsApi:ok') {
+    //                 // 分享给朋友
+    //                 var title = '【神武4真好玩】目标是成为真正的欧皇！';
+    //                 var desc = '【神武4真好玩】目标是成为真正的欧皇！';
+    //                 var img = 'https://sw.it2048.cn/wx.png';
+    //                 wx.onMenuShareAppMessage({
+    //                     title: title, // 分享标题
+    //                     desc: desc, // 分享描述
+    //                     link: pagelink, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+    //                     imgUrl: img, // 分享图标
+    //                     type: 'link', // 分享类型,music、video或link，不填默认为link
+    //                     // 用户取消已经监听不到了，不管取消与否，都是成功的
+    //                     success: function () {
+    //                         alert("恭喜你，分享成功");
+    //                     },
+    //                     // 用户取消分享后执行的回调函数
+    //                     cancel: function () {
+    //                         alert("取消分享");
+    //                     }
+    //                 });
+    //                 // 分享到朋友圈
+    //                 wx.onMenuShareTimeline({
+    //                     title: title, // 分享时的标题
+    //                     link: pagelink, // 分享时的链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+    //                     imgUrl: img, // 分享时显示的图标
+    //                     // 用户取消已经监听不到了，不管取消与否，都是成功的
+    //                     success: function () {
+    //                         alert("恭喜你，分享成功");
+    //                     },
+    //                     // 用户取消分享后执行的回调函数
+    //                     cancel: function () {
+    //                         alert("取消分享");
+    //                     }
+    //                 });
+    //             } else {
+    //                 alert("失败了.......");
+    //             }
+    //         }
+    //     });
+    // });
 
-    // 初始化错误监听
-    wx.error(function (res) {
-        alert(res.errMsg);
+    // // 初始化错误监听
+    // wx.error(function (res) {
+    //     alert(res.errMsg);
+    // });
+
+
+    //--创建页面监听，等待微信端页面加载完毕 触发音频播放
+    var musicStatus = true;
+    document.addEventListener('DOMContentLoaded', function () {
+        function audioAutoPlay() {
+            var audio = document.getElementById('audio');
+            // audio.play();
+            document.addEventListener("WeixinJSBridgeReady", function () {
+                audio.play();
+            }, false);
+        }
+        audioAutoPlay();
     });
+    function playPause(){
+        var bgMusic = document.getElementById('audio');
+        if (bgMusic.paused){
+            bgMusic.play();
+            $('.music_btn').removeClass('pause')
+            musicStatus = true;
+        } else{
+            bgMusic.pause();
+            $('.music_btn').addClass('pause')
+            musicStatus = false;
+        }
+    }
 </script>
 
 </body>
