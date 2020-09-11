@@ -77,48 +77,61 @@ page.init();
 var main = {
 	num: 6,
 	count: 0,
-	eventtxt: {
-		'0': {
+	countArr: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+	countShuffle: null,
+	eventtxt: [
+		{
+			num: 3,
+			type: '',
 			txt: '你居然触发了过关格！那就让这个欧气鉴定器来测测你的属性，器来！',
 			url: '//player.bilibili.com/player.html?bvid=BV1F54y1m7tW&page=1'
-		},
-		'6': {
+		},{
+			num: 6,
+			type: '游戏',
 			txt: '今天你参加了点钞比赛，听说只要赢得比赛就能拿到【欧洲玄学大法】。路人A不知为什么一直干扰你，最终你以1张的失误惜败于对手。',
 			url: '//player.bilibili.com/player.html?bvid=BV1yk4y1y7uo&page=1'
-		},
-		'10': {
+		},{
+			num: 5,
+			type: '惩罚',
 			txt: '你的对手对你使出了一招【天降正义】，以迅雷不及掩耳之势从你身边掠过。等你回过神时，发现自己脸上挂满了夹子，脸肿得和馒头一样大，只好去医院就医休息一天。',
 			url: '//player.bilibili.com/player.html?bvid=BV1Dt4y1S7RC&page=1'
-		},
-		'12': {
+		},{
+			num: 4,
+			type: '事件',
 			txt: '某天清晨醒来，你发现自己的头发竟然全部消失了！医生告诉你这是秃头症。伤心之余，你只好购买了医生推荐的植发套餐。',
 			url: '//player.bilibili.com/player.html?bvid=BV1Hi4y1u7uL&page=1'
-		},
-		'8': {
+		},{
+			num: 2,
+			type: '奖励',
 			txt: '买菜结账时，收银员欣喜的告诉你，你获得了友谊天长地久短袖一件。虽然你极力拒绝，但是店员仍旧强行把你和你的朋友套在了一起。',
 			url: '//player.bilibili.com/player.html?bvid=BV1Ep4y1e7ce&page=1'
-		},
-		'2': {
+		},{
+			num: 2,
+			type: '游戏',
 			txt: '公司团建，领导提议玩一个【鞋底撕名牌】的小游戏。面对强壮的你，小姐姐对你抛去了媚眼。你笑了笑，把她的脚抓得更紧了。最后，在她复杂的眼神里，你脱下她的鞋赢得了胜利。',
 			url: '//player.bilibili.com/player.html?bvid=BV1Wi4y1u7Bu&page=1'
-		},
-		'1': {
+		},{
+			num: 1,
+			type: '游戏',
 			txt: '你和妹妹一起参加【顶梁柱】比赛，你决定和妹妹合作一起通关。结果在抱起妹妹时，你的身体感受到一种超负荷的能量，成功闪了腰。你们只好中止比赛，去医院看病。',
 			url: '//player.bilibili.com/player.html?bvid=BV1Fy4y1y79T&page=1'
-		},
-		'3': {
+		},{
+			num: 1,
+			type: '事件',
 			txt: '朋友买了新款的撕腿毛神器，趁你不备先在你腿上试验了一下。你瞬间痛到两眼发黑，随后从朋友手里夺过神器，把朋友的汗毛撕了下来。听着朋友的惨叫，你慢悠悠的说，“这场游戏，没有赢家。”',
 			url: '//player.bilibili.com/player.html?bvid=BV1nK4y1a7t6&page=1'
-		},
-		'24': {
+		},{
+			num: 6,
+			type: '奖励',
 			txt: '你抽奖中了《神武4真好玩》综艺的嘉宾资格，在兴高采烈的上了节目5分钟，却因为回答过于生硬，在场的工作人员无一能接，最终拍摄中止。',
 			url: '//player.bilibili.com/player.html?bvid=BV14A411E7pg&page=1'
-		},
-		'18': {
+		},{
+			num: 6,
+			type: '事件',
 			txt: '你参加了一场绘画比赛，却在不知不觉中睡着了。等到醒来的时候，离交卷只剩5分钟了。于是你急中生智，拿出保鲜膜套在画框上，用脸用力的穿过了保鲜膜，成为了冠军！',
 			url: '//player.bilibili.com/player.html?bvid=BV1kK4y1a7fn&page=1 '
 		},
-	},
+	],
 	event: {
 		'1': {
 			upper: 2,
@@ -156,6 +169,7 @@ var main = {
 	},
 	init: function () {
 		this.bind();
+		this.countShuffle = this.shuffle(this.countArr);
 	},
 	bind: function () {
 		var self = this;
@@ -205,45 +219,46 @@ var main = {
 			self.closeShare();
 		});
 	},
+	shuffle: function (a){
+		var length = a.length;
+		var shuffled = Array(length);
+
+		for (var index = 0, rand; index < length; index++) {
+			rand = ~~(Math.random() * (index + 1));
+			if (rand !== index) 
+				shuffled[index] = shuffled[rand];
+			shuffled[rand] = a[index];
+		}
+		console.log('---shuffled---', shuffled);
+
+		return shuffled;
+	},
 	palyTouzi: function () {
 		var self = this;
 		$('.touzi_pause').hide();
 		$('.touzi_play').show();
 		setTimeout(function () {
-			if (self.count == 9) {
-				self.num = '' + 3;
-			}else{
-				self.num = '' + (Math.floor(Math.random() * (6 - 1 + 1)) + 1);
-			}
+			var shffleIndex = self.countShuffle[self.count];
+			var eventTxt = self.eventtxt[shffleIndex]; 
 			
-			if(self.num == '3'){
-				$('#res_title').html('扔出 3 点，哇了不起了不起！')
-				$('#res_content').html(self.eventtxt['0'].txt);
-				// $('.video').attr('src', self.eventtxt['0'].url);
-				self.setIframe(self.eventtxt['0'].url);
+			if(eventTxt.num == '3'){
+				$('#res_title').html('扔出 3 点，哇~了不起了不起！')
+				$('#res_content').html(self.eventtxt[0].txt);
+				self.setIframe(self.eventtxt[0].url);
 				$('.res_bg').attr('src', 'image/res_bg2.gif');
-				$('.touzi_res_img').attr('src', `image/dian/${self.num}.png`);
+				$('.touzi_res_img').attr('src', `image/dian/3.png`);
 				$('.res_box .title').removeClass('fail').addClass('ok');
 				$('.res_box_title').attr('src', 'image/perfect.png');
 				$('.res_icon_btn').attr('src', 'image/go.png');
 				$('.res_icon').removeClass('again').addClass('go');
 			} else {
-				var typeUpper = self.event[self.num].upper;
-				if(typeUpper == 0){
-					var type = self.event[self.num].type[0]
-				}else {
-					var typeIndex = Math.floor(Math.random() * (typeUpper - 1 + 1)) + 1;
-					var type = self.event[self.num].type[typeIndex-1];
-					
-				}
-				var eventTxtIndex = '' + (self.typeVal[type] * Number(self.num));
+				
 				self.count++;
-				$('#res_title').html(`扔出 ${self.num} 点，进入${self.typeName[type]}格`)
-				$('#res_content').html(self.eventtxt[eventTxtIndex].txt);
-				// $('.video').attr('src', self.eventtxt[eventTxtIndex].url);
-				self.setIframe(self.eventtxt[eventTxtIndex].url);
+				$('#res_title').html(`扔出 ${eventTxt.num} 点，进入${eventTxt.type}格`)
+				$('#res_content').html(eventTxt.txt);
+				self.setIframe(eventTxt.url);
 				$('.res_bg').attr('src', 'image/res_bg1.png');
-				$('.touzi_res_img').attr('src', `image/dian/${self.num}.png`);
+				$('.touzi_res_img').attr('src', `image/dian/${eventTxt.num}.png`);
 				$('.res_box .title').removeClass('ok').addClass('fail');
 				$('.res_box_title').attr('src', 'image/good_job.png');
 				$('.res_icon_btn').attr('src', 'image/again.png');
@@ -252,10 +267,6 @@ var main = {
 			}
 			self.hideMusic();
 			page.go2(2);
-			// 游戏格 6 2 1 youxi 6, 2, 1
-			// 惩罚格 5 chengfa 10
-			// 事件格 4 1 6 shijian 12, 3, 18
-			// 奖励格 2 6 jiangli 8, 24
 		}, 3000)
 	},
 	showMusic: function () {

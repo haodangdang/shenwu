@@ -168,12 +168,14 @@ body{
 .bg_music .music_btn{
   width: 100%;
   height: 100%;
-  background-image: url(//imgs.it2048.cn/sw/image/play_music.png?v=0.2?v=0.2);
+  background-image: url(//imgs.it2048.cn/sw/image/play_music.png?v=0.3);
   background-size: cover;
+  animation: play 1s linear infinite;
+  transform: translate3d(0,0,0);
 }
 
 .bg_music .music_btn.pause{
-  background-image: url(//imgs.it2048.cn/sw/image/pause_music.png?v=0.2?v=0.2);
+  background-image: url(//imgs.it2048.cn/sw/image/pause_music.png?v=0.3);
   background-size: cover;
 }
 
@@ -200,7 +202,7 @@ body{
 }
 .page_0{
 	position: relative;
-	background: url(//imgs.it2048.cn/sw/image/bg.jpg?v=0.2);
+	background: url(//imgs.it2048.cn/sw/image/bg.jpg?v=0.3);
 	background-size: 3.75rem auto;
 }
 .page_0 .logo{
@@ -231,7 +233,7 @@ body{
 	bottom: 0;
 	height: 1.46rem;
 	width: 100%;
-	background: url(//imgs.it2048.cn/sw/image/bg2.png?v=0.2);
+	background: url(//imgs.it2048.cn/sw/image/bg2.png?v=0.3);
 	background-size: contain;
 }
 .home_bottom .panda{
@@ -262,7 +264,7 @@ body{
 	width: 100%;
 	margin-top: 0.2rem;
 	margin-bottom: 0.14rem;
-	/*background: url(//imgs.it2048.cn/sw/image/press_start.png?v=0.2);
+	/*background: url(//imgs.it2048.cn/sw/image/press_start.png?v=0.3);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 2.42rem 0.39rem;*/
@@ -295,7 +297,7 @@ body{
 }
 
 .page_1{
-	background-image: url(//imgs.it2048.cn/sw/image/page2_bg.png?v=0.2);
+	background-image: url(//imgs.it2048.cn/sw/image/page2_bg.png?v=0.3);
 	background-repeat: no-repeat;
 	background-size: 100% auto;
 }
@@ -345,7 +347,7 @@ body{
 	bottom: 0;
 	width: 100%;
 	height: 1.88rem;
-	background: url(//imgs.it2048.cn/sw/image/page2_bottom.png?v=0.2);
+	background: url(//imgs.it2048.cn/sw/image/page2_bottom.png?v=0.3);
 	background-repeat: no-repeat;
 	background-size: contain;
 }
@@ -381,7 +383,7 @@ body{
 	bottom: 0;
 	width: 100%;
 	height: 4.46rem;
-	background: url(//imgs.it2048.cn/sw/image/res_bg.jpg?v=0.2);
+	background: url(//imgs.it2048.cn/sw/image/res_bg.jpg?v=0.3);
 	background-repeat: no-repeat;
 	background-size: contain;
 }
@@ -493,7 +495,7 @@ body{
 }
 .page_3{
 	width: 100%;
-	background: url(//imgs.it2048.cn/sw/image/page3_bg.png?v=0.2);
+	background: url(//imgs.it2048.cn/sw/image/page3_bg.png?v=0.3);
 	background-repeat: no-repeat;
 	background-size: 3.75rem auto;
 }
@@ -502,7 +504,7 @@ body{
 	bottom: 0;
 	height: 2.2rem;
 	width: 100%;
-	background: url(//imgs.it2048.cn/sw/image/page3_bottom.png?v=0.2);
+	background: url(//imgs.it2048.cn/sw/image/page3_bottom.png?v=0.3);
 	background-repeat: no-repeat;
 	background-size: 3.75rem auto;
 	display: flex;
@@ -542,7 +544,7 @@ body{
 .res_panel{
 	width: 3.4rem;
 	height: 5.385rem;
-	background: url(//imgs.it2048.cn/sw/image/res_panel.png?v=0.2);
+	background: url(//imgs.it2048.cn/sw/image/res_panel.png?v=0.3);
 	background-repeat: no-repeat;
 	background-size: 3.4rem 5.385rem;
 	margin: 0 auto;
@@ -570,7 +572,7 @@ body{
     margin-bottom: 0.3rem;
 }
 .res_panel .des{
-	width: 2.4rem;
+	width: 2.74rem;
     font-size: 0.14rem;
     /*padding-left: 0.32rem;*/
     line-height: 0.24rem;
@@ -646,7 +648,7 @@ body{
 .creat_img{
 	position: absolute;
     width: 100%;
-    height: 100%;
+    height: 6.77rem;
     /*z-index: 15;*/
     top: -20rem;
 }
@@ -672,7 +674,7 @@ body{
 	width: 3.405rem;
 	height: 4.7rem;
 	margin-left: -1.7025rem;
-	background: url(//imgs.it2048.cn/sw/image/jieqian_panel.png?v=0.2);
+	background: url(//imgs.it2048.cn/sw/image/jieqian_panel.png?v=0.3);
 	background-repeat: no-repeat;
 	background-size: contain;
 	z-index: 200;
@@ -690,13 +692,13 @@ body{
 	bottom: 0.5rem;
 	left: 50%;
 	margin-left: -0.2rem;
-	background: url(//imgs.it2048.cn/sw/image/close.png?v=0.2) no-repeat;
+	background: url(//imgs.it2048.cn/sw/image/close.png?v=0.3) no-repeat;
 	background-size: contain;
 }
 .fenxiang_show{
 	width: 2.345rem;
 	height: 2.44rem;
-	background: url(//imgs.it2048.cn/sw/image/share_tip.png?v=0.2) no-repeat;
+	background: url(//imgs.it2048.cn/sw/image/share_tip.png?v=0.3) no-repeat;
 	background-size: contain;
 	position: absolute;
 	top: 0.7rem;
@@ -712,7 +714,7 @@ body{
 	bottom: -0.6rem;
 	left: 50%;
 	margin-left: -0.2rem;
-	background: url(//imgs.it2048.cn/sw/image/close.png?v=0.2) no-repeat;
+	background: url(//imgs.it2048.cn/sw/image/close.png?v=0.3) no-repeat;
 	background-size: contain;
 }
 .model{
@@ -843,6 +845,36 @@ body{
   }
 }
 
+
+@-webkit-keyframes play {
+    0% {
+        -webkit-transform: rotate(0)
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg)
+    }
+}
+
+@-moz-keyframes play {
+    0% {
+        -moz-transform: rotate(0)
+    }
+
+    100% {
+        -moz-transform: rotate(360deg)
+    }
+}
+
+@keyframes play {
+    0% {
+        transform: rotate(0)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
 
 
 
