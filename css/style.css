@@ -168,12 +168,12 @@ body{
 .bg_music .music_btn{
   width: 100%;
   height: 100%;
-  background-image: url(//imgs.it2048.cn/sw/image/play_music.png?v=1.2);
+  background-image: url(//imgs.it2048.cn/sw/image/play_music.png?v=0.2?v=0.2);
   background-size: cover;
 }
 
 .bg_music .music_btn.pause{
-  background-image: url(//imgs.it2048.cn/sw/image/pause_music.png?v=1.2);
+  background-image: url(//imgs.it2048.cn/sw/image/pause_music.png?v=0.2?v=0.2);
   background-size: cover;
 }
 
@@ -200,7 +200,7 @@ body{
 }
 .page_0{
 	position: relative;
-	background: url(//imgs.it2048.cn/sw/image/bg.jpg);
+	background: url(//imgs.it2048.cn/sw/image/bg.jpg?v=0.2);
 	background-size: 3.75rem auto;
 }
 .page_0 .logo{
@@ -231,7 +231,7 @@ body{
 	bottom: 0;
 	height: 1.46rem;
 	width: 100%;
-	background: url(//imgs.it2048.cn/sw/image/bg2.png);
+	background: url(//imgs.it2048.cn/sw/image/bg2.png?v=0.2);
 	background-size: contain;
 }
 .home_bottom .panda{
@@ -262,7 +262,7 @@ body{
 	width: 100%;
 	margin-top: 0.2rem;
 	margin-bottom: 0.14rem;
-	/*background: url(//imgs.it2048.cn/sw/image/press_start.png);
+	/*background: url(//imgs.it2048.cn/sw/image/press_start.png?v=0.2);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 2.42rem 0.39rem;*/
@@ -295,7 +295,7 @@ body{
 }
 
 .page_1{
-	background-image: url(//imgs.it2048.cn/sw/image/page2_bg.png);
+	background-image: url(//imgs.it2048.cn/sw/image/page2_bg.png?v=0.2);
 	background-repeat: no-repeat;
 	background-size: 100% auto;
 }
@@ -345,7 +345,7 @@ body{
 	bottom: 0;
 	width: 100%;
 	height: 1.88rem;
-	background: url(//imgs.it2048.cn/sw/image/page2_bottom.png);
+	background: url(//imgs.it2048.cn/sw/image/page2_bottom.png?v=0.2);
 	background-repeat: no-repeat;
 	background-size: contain;
 }
@@ -381,7 +381,7 @@ body{
 	bottom: 0;
 	width: 100%;
 	height: 4.46rem;
-	background: url(//imgs.it2048.cn/sw/image/res_bg.jpg);
+	background: url(//imgs.it2048.cn/sw/image/res_bg.jpg?v=0.2);
 	background-repeat: no-repeat;
 	background-size: contain;
 }
@@ -493,7 +493,7 @@ body{
 }
 .page_3{
 	width: 100%;
-	background: url(//imgs.it2048.cn/sw/image/page3_bg.png);
+	background: url(//imgs.it2048.cn/sw/image/page3_bg.png?v=0.2);
 	background-repeat: no-repeat;
 	background-size: 3.75rem auto;
 }
@@ -502,7 +502,7 @@ body{
 	bottom: 0;
 	height: 2.2rem;
 	width: 100%;
-	background: url(//imgs.it2048.cn/sw/image/page3_bottom.png);
+	background: url(//imgs.it2048.cn/sw/image/page3_bottom.png?v=0.2);
 	background-repeat: no-repeat;
 	background-size: 3.75rem auto;
 	display: flex;
@@ -542,7 +542,7 @@ body{
 .res_panel{
 	width: 3.4rem;
 	height: 5.385rem;
-	background: url(//imgs.it2048.cn/sw/image/res_panel.png);
+	background: url(//imgs.it2048.cn/sw/image/res_panel.png?v=0.2);
 	background-repeat: no-repeat;
 	background-size: 3.4rem 5.385rem;
 	margin: 0 auto;
@@ -567,39 +567,41 @@ body{
 	width: 2.305rem;
     height: 0.565rem;
     margin-left: 0.36rem;
+    margin-bottom: 0.3rem;
 }
 .res_panel .des{
 	width: 2.4rem;
     font-size: 0.14rem;
-    padding-left: 0.32rem;
+    /*padding-left: 0.32rem;*/
     line-height: 0.24rem;
     margin-bottom: 0.11rem;
     margin-left: 0.32rem;
     text-align: justify;
+    display: flex;
+    align-items: flex-start;
 }
-.res_panel .xinyunse{
+.res_panel .des img{
+	margin-right: 0.1rem;
+}
+.res_panel .xinyunse img{
 	width: 0.225rem;
 	height: 0.225rem;
 }
-.res_panel .yi{
-	background: url(//imgs.it2048.cn/sw/image/yi.png);
-	background-repeat: no-repeat;
-	background-size: 0.225rem auto;
+.res_panel .yi img{
+	width: 0.225rem;
+	height: 0.225rem;
 }
-.res_panel .chenghao{
-	background: url(//imgs.it2048.cn/sw/image/chenghao.png);
-	background-repeat: no-repeat;
-	background-size: 0.225rem auto;
+.res_panel .chenghao img{
+	width: 0.225rem;
+	height: 0.22rem;
 }
-.res_panel .liwu{
-	background: url(//imgs.it2048.cn/sw/image/liwu.png);
-	background-repeat: no-repeat;
-	background-size: 0.225rem auto;
+.res_panel .liwu img{
+	width: 0.225rem;
+	height: 0.22rem;
 }
-.res_panel .jieqian{
-	background: url(//imgs.it2048.cn/sw/image/jieqian.png);
-	background-repeat: no-repeat;
-	background-size: 0.225rem auto;
+.res_panel .jieqian img{
+	width: 0.225rem;
+	height: 0.195rem;
 }
 .res_panel .ctrl{
 	overflow: hidden;
@@ -670,7 +672,7 @@ body{
 	width: 3.405rem;
 	height: 4.7rem;
 	margin-left: -1.7025rem;
-	background: url(//imgs.it2048.cn/sw/image/jieqian_panel.png);
+	background: url(//imgs.it2048.cn/sw/image/jieqian_panel.png?v=0.2);
 	background-repeat: no-repeat;
 	background-size: contain;
 	z-index: 200;
@@ -688,13 +690,13 @@ body{
 	bottom: 0.5rem;
 	left: 50%;
 	margin-left: -0.2rem;
-	background: url(//imgs.it2048.cn/sw/image/close.png) no-repeat;
+	background: url(//imgs.it2048.cn/sw/image/close.png?v=0.2) no-repeat;
 	background-size: contain;
 }
 .fenxiang_show{
 	width: 2.345rem;
 	height: 2.44rem;
-	background: url(//imgs.it2048.cn/sw/image/share_tip.png) no-repeat;
+	background: url(//imgs.it2048.cn/sw/image/share_tip.png?v=0.2) no-repeat;
 	background-size: contain;
 	position: absolute;
 	top: 0.7rem;
@@ -710,7 +712,7 @@ body{
 	bottom: -0.6rem;
 	left: 50%;
 	margin-left: -0.2rem;
-	background: url(//imgs.it2048.cn/sw/image/close.png) no-repeat;
+	background: url(//imgs.it2048.cn/sw/image/close.png?v=0.2) no-repeat;
 	background-size: contain;
 }
 .model{
