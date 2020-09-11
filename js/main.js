@@ -303,11 +303,11 @@ var main = {
 			jieqian = '解签：虽然你今天的手气有点差，但是身上却隐隐有红线缠绕。没事去《神武4》一些人迹罕见的地图，可能会有意想不到的桃花缘降临哦？';
 		}
 		$('.title_type').attr('src', `image/${title}.png`);
-		$('.xinyunse').html(xinyunse);
-		$('.yi').html(yi);
-		$('.chenghao').html(chenghao);
-		$('.liwu').html(liwu);
-		$('.jieqian').html(jieqian);
+		$('.xinyunse span').html(xinyunse);
+		$('.yi span').html(yi);
+		$('.chenghao span').html(chenghao);
+		$('.liwu span').html(liwu);
+		$('.jieqian span').html(jieqian);
 		self.showJieqian();
 		page.go2(3);
 		self.img();

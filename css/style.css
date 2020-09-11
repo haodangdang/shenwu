@@ -552,6 +552,17 @@ body{
 	padding-top: 0.7rem;
 	box-sizing: border-box;
 }
+.creat_img .res_panel {
+	background: no-repeat;
+}
+.res_panel .res_panel_img{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 3.4rem;
+	height: 5.385rem;
+	z-index: -1;
+}
 .res_panel .title{
 	width: 2.305rem;
     height: 0.565rem;
@@ -567,10 +578,8 @@ body{
     text-align: justify;
 }
 .res_panel .xinyunse{
-	background: url(//imgs.it2048.cn/sw/image/xingyunse.png);
-	background-repeat: no-repeat;
-	background-size: 0.225rem auto;
-	margin-top: 0.3rem;
+	width: 0.225rem;
+	height: 0.225rem;
 }
 .res_panel .yi{
 	background: url(//imgs.it2048.cn/sw/image/yi.png);
