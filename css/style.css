@@ -132,6 +132,7 @@ html {
 body{
 	height: 100%;
 	background: #fff;
+	-webkit-backface-visibility: hidden;
 }
 .imgpre{
 	position: absolute;
@@ -168,7 +169,10 @@ body{
 .bg_music .music_btn{
   width: 100%;
   height: 100%;
-  background-image: url(//imgs.it2048.cn/sw/image/play_music.png?v=0.3);
+}
+
+.bg_music .music_btn.play{
+	background-image: url(//imgs.it2048.cn/sw/image/play_music.png?v=0.3);
   background-size: cover;
   animation: play 1s linear infinite;
   transform: translate3d(0,0,0);
@@ -242,6 +246,8 @@ body{
 	left: 50%;
 	width: 2.665rem;
 	margin-left: -1.3325rem;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 }
 .home_bottom .panda img{
 	width: 100%;
@@ -290,6 +296,8 @@ body{
 	top: 50%;
 	margin-top: -0.29rem;
 	margin-left: -0.29rem;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 }
 .home_bottom .home_ctrl .touzi_gif img{
 	width: 100%;
@@ -371,9 +379,13 @@ body{
 	width: 1.7rem;
 	margin: 0 auto;
 	margin-top: -1rem;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 }
 .page1_bottom .touzi .touzi_play{
 	display: none;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 }
 .page_2{
 	background: #ef880a;
@@ -443,6 +455,12 @@ body{
 	top: -1.11rem;
 	left: 50%;
 	margin-left: -1.35rem;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+.res .res_bg{
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 }
 .res .touzi_res{
 	position: absolute;
@@ -517,6 +535,8 @@ body{
 	position: absolute;
     left: 0.1rem;
     bottom: 0.22rem;
+    -webkit-backface-visibility: hidden;
+	backface-visibility: hidden; ≤≥
 }
 .page_3 .page3_bottom .qrcode{
 	width: 0.765rem;
@@ -625,9 +645,16 @@ body{
 }
 .res_panel .press{
 	position: absolute;
-	width: 1.68rem;
+	width: 1.475rem;
 	height: 0.33rem;
 	left: 0.32rem;
+    bottom: 0.3rem;
+}
+.res_panel .play_again{
+	position: absolute;
+	width: 1.075rem;
+	height: 0.33rem;
+	right: 0.32rem;
     bottom: 0.3rem;
 }
 .res_panel .logo{
@@ -639,11 +666,11 @@ body{
 }
 .share_logo{
 	position: absolute;
-	width: 0.995rem;
-	height: 0.59rem;
-	bottom: 0.3rem;
+	width: 1.62rem;
+	height: 0.965rem;
+	bottom: 0.1rem;
 	left: 50%;
-	margin-left: -0.4975rem;
+	margin-left: -0.81rem;
 }
 .creat_img{
 	position: absolute;
@@ -756,6 +783,8 @@ body{
 	top: -1.4rem;
 	left: 50%;
 	margin-left: -1.32rem;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 }
 
 .model .model_1 .skip{
@@ -772,6 +801,8 @@ body{
     position: absolute;
     bottom: 0.36rem;
     right: 0.15rem;
+    -webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 }
 .model .model_2 .skip{
 	margin-top: 0.7rem;
@@ -798,6 +829,8 @@ body{
 	margin: 0 auto;
 	margin-top: -0.44rem;
     margin-bottom: 0.14rem;
+    -webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 }
 .animate__flash {
   -webkit-animation-name: flash;

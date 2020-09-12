@@ -173,6 +173,7 @@ var main = {
 	},
 	bind: function () {
 		var self = this;
+
 		$('.home_ctrl').on('click', function () {
 			page.go2(1);
 			self.initModel();
@@ -197,6 +198,8 @@ var main = {
 			},1000)
 		});
 		$('.res_icon').on('click', function () {
+			// var myVideo = document.getElementById('video');
+			// myVideo.removeEventListener('ended');
 			if($(this).hasClass('go')){
 				self.creatRes();
 			}else{
@@ -218,6 +221,17 @@ var main = {
 		$('.close_share').on('click', function () {
 			self.closeShare();
 		});
+	},
+	//退出全屏
+	exitFullscreen: function () {
+	    var de = document;
+	    if (de.exitFullscreen) {
+	        de.exitFullscreen();
+	    } else if (de.mozCancelFullScreen) {
+	        de.mozCancelFullScreen();
+	    } else if (de.webkitCancelFullScreen) {
+	        de.webkitCancelFullScreen();
+	    }
 	},
 	shuffle: function (a){
 		var length = a.length;
@@ -284,8 +298,13 @@ var main = {
 		$('.bg_music').hide();
 	},
 	setIframe: function (url) {
-		var iframe_dom = `<iframe class="video" src="${url}" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>`;
+		var iframe_dom = `<iframe class="video" id="video" src="${url}" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"> </iframe>`;
 		$('.video_box').html(iframe_dom);
+		var myVideo = document.getElementById('video');
+	    myVideo.addEventListener('ended', function () {
+	        alert("player exitfullscreen");
+	        // self.exitFullscreen();
+	    });
 	},
 	creatRes: function () {
 		var self = this;
