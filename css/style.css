@@ -14,6 +14,15 @@ fieldset,hr,img {
 	width: 100%
 }
 
+html{
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Chrome/Safari/Opera */
+	-khtml-user-select: none; /* Konqueror */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; 
+}
+
 blockquote,body,button,dd,dl,dt,fieldset,figcaption,figure,h1,h2,h3,h4,h5,h6,hr,input,legend,li,ol,p,pre,td,textarea,th,ul {
 	margin: 0;
 	padding: 0
@@ -663,6 +672,23 @@ body{
 	height: 0.59rem;
 	right: 0.32rem;
     bottom: 0.3rem;
+}
+.play_again_p{
+	width: 3.4rem;
+	height: 5.385rem;
+	margin: 0 auto;
+	position: relative;
+	z-index: 100;
+	padding-top: 0.7rem;
+	box-sizing: border-box;
+}
+.play_again_btn{
+	position: absolute;
+	width: 1.075rem;
+	height: 0.33rem;
+	right: 0.5rem;
+    top: 4.76rem;
+    z-index: 300;
 }
 .share_logo{
 	position: absolute;

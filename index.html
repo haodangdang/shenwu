@@ -42,6 +42,9 @@
     <div class="bg_music">
         <div style="height:0px;overflow:hidden;">
             <audio id="audio" src="//imgs.it2048.cn/sw/audio/bgm.mp3?v=0.3" loop="loop"></audio>
+            <audio id="vector_audio" src="audio/vector.mp3?v=0.3"></audio>
+            <audio id="fail_audio" src="audio/fail.mp3?v=0.3"></audio>
+            <audio id="touzi_audio" src="audio/touzi_music.mp3?v=0.3"></audio>
         </div>
         <a href="javascript:playPause();">
             <div class="music_btn play"></div>
@@ -206,7 +209,10 @@
                 <img class="qrcode" src="image/qrcode.png?v=0.3" alt="">
             </div>
         </div>
-        <div class="img_wrap" id="img_res"></div>
+        <div class="img_wrap">
+            <div class="play_again_btn"></div>
+            <div class="img_res" id="img_res"></div>
+        </div>
     </div>
     <div class="block_bg">请稍等，解签中...</div>
 </div><!-- /#root -->
@@ -217,7 +223,7 @@
 <script type="text/javascript" src="//imgs.it2048.cn/sw/js/canvas2image.js"></script>
 <script src="//imgs.it2048.cn/sw/inobounce.min.js"></script>
 <script src="//imgs.it2048.cn/sw/hammer.min.js"></script>
-<script src="./js/main.js?v=(new Date()).getTime()"></script>
+<script src="./js/main.js?v=0.3"></script>
 
 <script>
     //--创建页面监听，等待微信端页面加载完毕 触发音频播放
@@ -225,8 +231,17 @@
     document.addEventListener('DOMContentLoaded', function () {
         function audioAutoPlay() {
             var audio = document.getElementById('audio');
+            var vectorAudio = document.getElementById('vector_audio');
+            var failAudio = document.getElementById('fail_audio');
+            var touziAudio = document.getElementById('zouzi_audio');
             document.addEventListener("WeixinJSBridgeReady", function () {
                 audio.play();
+                vectorAudio.play();
+                vectorAudio.pause();
+                failAudio.play();
+                failAudio.pause();
+                touziAudio.play();
+                touziAudio.pause();
             }, false);
         }
         audioAutoPlay();

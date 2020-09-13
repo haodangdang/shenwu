@@ -169,7 +169,7 @@ var main = {
 	},
 	init: function () {
 		this.bind();
-		this.countShuffle = this.shuffle(this.countArr);
+		this.shuffle();
 	},
 	bind: function () {
 		var self = this;
@@ -200,6 +200,7 @@ var main = {
 		$('.res_icon').on('click', function () {
 			// var myVideo = document.getElementById('video');
 			// myVideo.removeEventListener('ended');
+			self.restIframe();
 			if($(this).hasClass('go')){
 				self.creatRes();
 			}else{
@@ -221,6 +222,14 @@ var main = {
 		$('.close_share').on('click', function () {
 			self.closeShare();
 		});
+		$('.play_again_btn').on('click', function () {
+			self.shuffle()
+			self.count = 0;
+			$('.time span').html(10 - self.count);
+			$('.touzi_pause').show();
+			$('.touzi_play').hide();
+			page.go2(1);
+		});
 	},
 	//退出全屏
 	exitFullscreen: function () {
@@ -233,28 +242,34 @@ var main = {
 	        de.webkitCancelFullScreen();
 	    }
 	},
-	shuffle: function (a){
-		var length = a.length;
+	shuffle: function (){
+		var self = this;
+		var countArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+		var length = countArr.length;
 		var shuffled = Array(length);
 
 		for (var index = 0, rand; index < length; index++) {
 			rand = ~~(Math.random() * (index + 1));
 			if (rand !== index) 
 				shuffled[index] = shuffled[rand];
-			shuffled[rand] = a[index];
+			shuffled[rand] = countArr[index];
 		}
 		console.log('---shuffled---', shuffled);
 
-		return shuffled;
+		self.countShuffle = shuffled;
 	},
 	palyTouzi: function () {
 		var self = this;
 		$('.touzi_pause').hide();
 		$('.touzi_play').show();
+		var touziMusic = document.getElementById('touzi_audio');
+		if(musicStatus){
+			touziMusic.play();
+		}
 		setTimeout(function () {
 			var shffleIndex = self.countShuffle[self.count];
 			var eventTxt = self.eventtxt[shffleIndex]; 
-			
+			self.hideMusic();
 			if(eventTxt.num == '3'){
 				$('#res_title').html('扔出 3 点，哇~了不起了不起！')
 				$('#res_content').html(self.eventtxt[0].txt);
@@ -265,8 +280,11 @@ var main = {
 				$('.res_box_title').attr('src', 'image/perfect.png');
 				$('.res_icon_btn').attr('src', 'image/go.png');
 				$('.res_icon').removeClass('again').addClass('go');
+				var vectorMusic = document.getElementById('vector_audio');
+				if(musicStatus){
+					vectorMusic.play();
+				}
 			} else {
-				
 				self.count++;
 				$('#res_title').html(`扔出 ${eventTxt.num} 点，进入${eventTxt.type}格`)
 				$('#res_content').html(eventTxt.txt);
@@ -278,10 +296,14 @@ var main = {
 				$('.res_icon_btn').attr('src', 'image/again.png');
 				$('.res_icon').addClass('again').removeClass('go');
 				$('.time span').html(10 - self.count);
+				var failMusic = document.getElementById('fail_audio');
+				if(musicStatus){
+					failMusic.play();
+				}
+				
 			}
-			self.hideMusic();
 			page.go2(2);
-		}, 3000)
+		}, 2000)
 	},
 	showMusic: function () {
 		var bgMusic = document.getElementById('audio');
@@ -300,11 +322,10 @@ var main = {
 	setIframe: function (url) {
 		var iframe_dom = `<iframe class="video" id="video" src="${url}" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"> </iframe>`;
 		$('.video_box').html(iframe_dom);
-		var myVideo = document.getElementById('video');
-	    myVideo.addEventListener('ended', function () {
-	        alert("player exitfullscreen");
-	        // self.exitFullscreen();
-	    });
+	},
+	restIframe(){
+		var iframe_dom = '';
+		$('.video_box').html(iframe_dom);
 	},
 	creatRes: function () {
 		var self = this;
