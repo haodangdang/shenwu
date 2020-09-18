@@ -360,8 +360,11 @@ var main = {
 		$('.liwu span').html(liwu);
 		$('.jieqian span').html(jieqian);
 		self.showJieqian();
-		page.go2(3);
-		self.img();
+		setTimeout(function () {
+			page.go2(3);
+			self.img();
+		}, 500);
+		
 	},
 	img: function(){
         var self = this,
